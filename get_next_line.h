@@ -10,11 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_GET_NEXT_LINE.H
-# define FT_GET_NEXT_LINE.H
-# include <>
+#ifndef GET_NEXT_LINE.H
+# define GET_NEXT_LINE.H
+# include <unistd.h>
+# include <stdlib.h>
 
+int		ft_strlen(const char *str);
+char	*get_next_line(int fd);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strdup(const char *s);
+char	*ft_strchr(const char *s, int c);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
 
 #endif
-
-
