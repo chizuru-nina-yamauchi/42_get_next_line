@@ -55,7 +55,7 @@ char	*get_next_line(int fd)
 
 	buffer_size = 0;
 	line = NULL;
-	if (fd < 0 || Buffer_size <= 0)
+	if (fd < 0 || buffer_size <= 0)
 		return (NULL);
 	while (1)
 	{

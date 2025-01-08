@@ -51,7 +51,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	unsigned char	*d;
 	const unsigned char *s;
 	
-	d = (unsigend char *)dest;
+	d = (unsigned char *)dest;
 	s = (const unsigned char *)src;
 	if (!dest && !src)
 		return (NULL);
@@ -79,7 +79,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (NULL);
 	ft_memcpy(new_str, s1, len1);
 	ft_memcpy(new_str + len1, s2, len2);
-	new_str[len1 + len2} = '\0';
+	new_str[len1 + len2] = '\0';
 	return (new_str);
 }
 

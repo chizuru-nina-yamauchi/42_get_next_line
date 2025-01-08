@@ -24,7 +24,7 @@ int main(void)
 	printf("\n");
 	
 	// test 2
-	fd = open("single_line_file.txt", ORDONLY);
+	fd = open("single_line_file.txt", O_RDONLY);
 	if (fd == -1)
 	{
 		perror("Error opening file");
@@ -56,7 +56,7 @@ int main(void)
 	printf("\n");
 	
 	// test 4
-	fd = open("no_newline_file.txt", ORDONLY);
+	fd = open("no_newline_file.txt", O_RDONLY);
 	if (fd == -1)
 	{
 		perror("Error opening file");
