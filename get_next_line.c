@@ -28,6 +28,7 @@ static char	*get_line_from_buffer(char *buffer, int *buffer_size)
 {
 	char	*newline_pos;
 	char	*line;
+	int			remaining_size;
 
 	newline_pos = ft_strchr(buffer, '\n');
 	line = NULL;
@@ -35,8 +36,17 @@ static char	*get_line_from_buffer(char *buffer, int *buffer_size)
 	{
 		*newline_pos = '\0';
 		line = ft_strdup(buffer);
-		ft_memcpy(buffer, newline_pos + 1, *buffer_size - (newline_pos - buffer) - 1);
-		*buffer_size -= (newline_pos - buffer + 1);
+		remaining_size = *buffer_size - (newline_pos - buffer) - 1;
+		if (remaining_size > 0)
+		{
+			ft_memcpy(buffer, newline_pos + 1, remaining_size);
+			*buffer_size = remaining_size;
+		}
+		else
+		{
+			*buffer_size = 0;
+		}
+		
 	}
 	else if (*buffer_size > 0)
 	{
@@ -53,15 +63,16 @@ char	*get_next_line(int fd)
 	char	*line;
 	char	*new_line;
 
-	buffer_size = 0;
 	line = NULL;
-	if (fd < 0 || buffer_size <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	while (1)
 	{
-		if (buffer_size == 0 && !read_from_fd(fd, buffer, &buffer_size))
+		if (buffer_size == 0)
 		{
-			break;
+			buffer_size = read_from_fd(fd, buffer, &buffer_size);
+			if (buffer_size == 0)
+				break;
 		}
 		new_line = get_line_from_buffer(buffer, &buffer_size);
 		if (new_line)
