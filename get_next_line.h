@@ -19,11 +19,11 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-int		ft_strlen(const char *str);
+size_t		ft_strlen(const char *str);
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strdup(const char *s);
 char	*ft_strchr(const char *s, int c);
-void	*ft_memcpy(void *dest, const void *src, size_t n);
+void	*ft_calloc(size_t count, size_t size);
+void	ft_bzero(void *s, size_t n);
 
 #endif
